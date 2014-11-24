@@ -700,7 +700,7 @@ end playground
 
 The definition above can be read as: "if =n= is =O=, then it is even;
 if =n= has the form =S n₁= for some =n₁=, and =n₁= is even (this information
-is stored in =r=), then =n₁= is *not* even. We say =r= is the
+is stored in =r=), then =n₁= is *not* even". We say =r= is the
 _recursive parameter_ in the minor premise associated with the constructor
 =S=. For non-recursive inductive datatypes, the recursors =cases_on= and =rec_on=
 are identical.
@@ -784,7 +784,7 @@ end playground
 #+END_SRC
 
 The definition above can be read: "if =n= is =O=, then the result of the addition is =m=;
-if =n= has the form =S n₁= for some =n₁= and =r= contains =add n₁ m=, then return =S r=.
+if =n= has the form =S n₁= for some =n₁= and =r= contains =add n₁ m=, then return =S r=".
 
 We can use =add= to define a coercion from =num= to our =nat=.
 The type =num= is defined as
@@ -1555,7 +1555,7 @@ end boolean
 #+END_SRC
 
 The proof above can be read as: "take a boolean =b=, it can be =true= or =false=,
-in both cases if we evaluate the left/right hand sides, we obtain the same value.
+in both cases if we evaluate the left/right hand sides, we obtain the same value".
 
 If we replace the =rfl='s by =_= in the proof above, Lean will say the placeholders =_='s
 cannot be synthesized, and will show what needs to be proved:
