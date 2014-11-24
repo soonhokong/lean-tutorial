@@ -1,4 +1,14 @@
 .cask/
 *.html
-*.html~
+*~
 watchman/
+*.acn
+*.aux
+*.glo
+*.idx
+*.ist
+*.log
+*.out
+*.tex
+*.pdf
+*.toc
