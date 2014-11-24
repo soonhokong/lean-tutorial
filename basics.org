@@ -1,3 +1,4 @@
+#+Title: Lean Tutorial
 #+Author: [[http://leodemoura.github.io][Leonardo de Moura]]
 #+HTML_HEAD: <link rel='stylesheet' href='css/tutorial.css'>
 #+HTML_HEAD_EXTRA:<link rel='stylesheet' href='css/jquery-ui.css'>
@@ -7,7 +8,43 @@
 #+HTML_HEAD_EXTRA:<link rel='import' href='juicy-ace-editor.html'>
 #+HTML_HEAD_EXTRA:<link rel='stylesheet' href='css/code.css'>
 #+OPTIONS: toc:nil
-#+Title: Lean Tutorial
+
+#+BEGIN_SRC emacs-lisp :results silent :exports results
+  (require 'cl) ;; The find function is in the cl library.
+  (unless (find "per-file-class" org-latex-classes :key 'car :test 'equal)
+    (add-to-list 'org-latex-classes
+                 '("per-file-class"
+                   "\\documentclass{memoir}"
+                   ("\\part{%s}" . "\\part{%s}")
+                   ("\\chapter{%s}" . "\\chapter*{%s}")
+                   ("\\section{%s}" . "\\section*{%s}")
+                   ("\\subsection{%s}" . "\\subsection*{%s}")
+                   ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
+                   ("\\paragraph{%s}" . "\\paragraph*{%s}")
+                   ("\\subparagraph{%s}" . "\\subparagraph*{%s}"))))
+  (add-to-list 'org-export-smart-quotes-alist
+               '("en"
+                 (opening-double-quote :utf-8 "“" :html "&ldquo;" :latex "\\enquote{" :texinfo "``")
+                 (closing-double-quote :utf-8 "”" :html "&rdquo;" :latex "}" :texinfo "''")
+                 (opening-single-quote :utf-8 "‘" :html "&lsquo;" :latex "\\enquote*{" :texinfo "`")
+                 (closing-single-quote :utf-8 "’" :html "&rsquo;" :latex "}" :texinfo "'")
+                 (apostrophe :utf-8 "’" :html "&rsquo;")))
+
+  ;; Header.tex explicitly loads all necessary packages.
+  (make-local-variable 'org-latex-default-packages-alist)
+  (setf org-latex-default-packages-alist nil)
+#+END_SRC
+
+#+LANGUAGE: en
+# #+OPTIONS: H:5 ':t
+#+LATEX_CLASS: per-file-class
+#+LATEX_CLASS_OPTIONS: [11pt,ebook,table,dvipsnames,oneside,openany]
+#+LATEX_HEADER: \input{Header}
+
+#+BEGIN_LATEX
+%\OnehalfSpacing
+#+END_LATEX
+
 
 * Basics: Functional Programming in Lean
 
@@ -1574,3 +1611,12 @@ and
 For readers using the Lean Emacs mode, they can simply hover over the incomplete proof
 to obtain information about missing parts. Lean also reports the type of every =sorry= used in
 an input file.
+
+#+BEGIN_LATEX
+\bibliographystyle{plain}
+\bibliography{Crypto101}
+
+\setglossarystyle{altlisthypergroup}
+\glsaddall
+\printglossaries
+#+END_LATEX
