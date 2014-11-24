@@ -929,7 +929,7 @@ end playground
 **** Exercise =factorial=
 
 Recall the standard factorial function:
-#+BEGIN_SRC
+#+BEGIN_SRC text
     factorial(0)  =  1
     factorial(n)  =  n * factorial(n-1)     (if n>0)
 #+END_SRC
@@ -1559,13 +1559,13 @@ in both cases if we evaluate the left/right hand sides, we obtain the same value
 
 If we replace the =rfl='s by =_= in the proof above, Lean will say the placeholders =_='s
 cannot be synthesized, and will show what needs to be proved:
-#+BEGIN_SRC
+#+BEGIN_SRC text
 
   ⊢ neg (neg false) = false
 
 #+END_SRC
 and
-#+BEGIN_SRC
+#+BEGIN_SRC text
 
   ⊢ neg (neg true) = true
 
